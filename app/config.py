@@ -15,4 +15,4 @@ class Settings(BaseSettings):
         env_file = ".env"
         
 settings = Settings()
-print(settings.database_password)
+print("DB pwd: ", settings.database_password)

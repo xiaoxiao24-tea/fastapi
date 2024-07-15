@@ -18,8 +18,8 @@ from app import database
 from app.config import Settings
 from fastapi.middleware.cors import CORSMiddleware
 
-
-models.Base.metadata.create_all(bind=engine)
+# don't need it, used for create table models
+# models.Base.metadata.create_all(bind=engine)
 
 
 ## all path operation
