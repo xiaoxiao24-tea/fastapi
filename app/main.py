@@ -9,14 +9,16 @@ import psycopg2
 
 from psycopg2.extras import RealDictCursor
 import time
+from . import database, utils
+from . import models, oath2
+from . import schemas
 from sqlalchemy.orm import Session 
 from sqlalchemy import func
 # import sys
-from app import models, schemas, utils, oath2
-from app.database import engine, SessionLocal, get_db
-from app import database
-from app.config import Settings
+from .database import engine, SessionLocal, get_db
 from fastapi.middleware.cors import CORSMiddleware
+
+from .schemas import PostOut
 
 # don't need it, used for create table models
 # models.Base.metadata.create_all(bind=engine)
@@ -73,7 +75,7 @@ def root():
 
 
 
-@app.get("/posts", response_model= List[schemas.PostOut])
+@app.get("/posts", response_model= List[PostOut])
 def get_posts(db:Session =Depends(get_db), get_current_user : int = Depends(oath2.get_current_user), limit : int = 10, skip: int =0, search: Optional[str] = ""):
     # cursor.execute("""select * from posts""")
     # posts = cursor.fetchall()
