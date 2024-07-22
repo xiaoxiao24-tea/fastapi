@@ -40,7 +40,7 @@ app.add_middleware(
 
 @app.get('/')
 def root():
-    return {"message":"hello!!ttest"}
+    return {"message":"hello!!try"}
 
 
 # stored memory
